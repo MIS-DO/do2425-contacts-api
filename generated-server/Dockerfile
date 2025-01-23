@@ -15,7 +15,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-VOLUME /usr/src/app/data
+VOLUME /usr/src/app/logs
 
 EXPOSE 8080
 CMD [ "npm", "start" ]

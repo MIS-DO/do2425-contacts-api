@@ -1,0 +1,29 @@
+services:
+  contacts-dev:
+    build: .
+    restart: on-failure
+    depends_on:
+      - mongo-dev
+    environment:
+      - NODE_ENV=development
+      - VIRTUAL_HOST=dev.do2425-contacts.es
+      - MONGODB_HOST=mongo-dev
+  mongo-dev:
+    image: mongo
+    volumes:
+      - "./data:/data/db"
+  contacts-prod:
+    build: .
+    restart: on-failure
+    depends_on:
+      - mongo-prod
+    environment:
+      - NODE_ENV=production
+      - VIRTUAL_HOST=do2425-contacts.es
+      - MONGODB_HOST=mongo-prod
+  mongo-prod:
+    image: mongo
+networks:
+  default:
+    external:
+      name: service-tier

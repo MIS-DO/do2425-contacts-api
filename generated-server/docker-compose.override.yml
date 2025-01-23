@@ -1,0 +1,15 @@
+services:
+  contacts:
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - "logsvol:/usr/src/app/logs"
+  mongo:
+    command: ['--logpath', '/var/log/mongodb/db.log']
+    volumes:
+      - "datavol:/data/db"
+      - "logsvol:/var/log/mongodb"
+volumes:
+  logsvol:
+    external: true
+  datavol:
