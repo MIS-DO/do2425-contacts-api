@@ -20,7 +20,7 @@ const config = {
 // Initialize database before running the app
 var db = require('./db');
 db.connect(function (err, _db) {
-  console.info('Initializing DB...');
+  console.info('Initializing DB from the other container...');
   if(err) {
     console.error('Error connecting to DB!', err);
     return 1;
